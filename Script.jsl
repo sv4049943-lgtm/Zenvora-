@@ -1,0 +1,164 @@
+const products = [
+["Mini Portable Juicer","Kitchen",699,1299,"🥤"],
+["LED Motion Sensor Light","Home",349,699,"💡"],
+["Magnetic Car Phone Holder","Electronics",299,599,"🚗"],
+["Kitchen Chopper","Kitchen",499,899,"🔪"],
+["5-in-1 Cleaning Brush","Home",249,499,"🧹"],
+["Wireless Earbuds","Electronics",899,1799,"🎧"],
+["Electric Cleaning Scrubber","Home",999,1999,"🧽"],
+["Makeup Organizer","Beauty",399,799,"💄"],
+["USB Rechargeable Fan","Electronics",599,999,"🌀"],
+["Vacuum Storage Bags","Home",299,599,"🛍️"],
+["Oil Spray Bottle","Kitchen",199,399,"🫙"],
+["Smart LED Strip","Electronics",449,899,"🌈"],
+["Neck & Shoulder Massager","Lifestyle",1299,2499,"💆"],
+["Travel Organizer Bag","Lifestyle",349,699,"🧳"],
+["Silicone Air Fryer Liner","Kitchen",249,499,"🍟"],
+["Mini Bluetooth Speaker","Electronics",499,999,"🔊"],
+["Face Ice Roller","Beauty",199,399,"🧊"],
+["Foldable Laptop Stand","Electronics",549,999,"💻"],
+["Waterproof Storage Box","Home",449,799,"📦"],
+["Portable Blender","Kitchen",799,1499,"🥝"],
+["Rechargeable Torch","Electronics",399,799,"🔦"],
+["Hair Styling Brush","Beauty",699,1399,"💇"],
+["Shoe Cleaning Kit","Lifestyle",299,599,"👟"],
+["Kitchen Measuring Set","Kitchen",249,499,"🥄"],
+["Car Cleaning Gel","Lifestyle",199,399,"🚙"],
+["Desk Cable Organizer","Electronics",149,299,"🔌"],
+["Microfiber Cleaning Cloth","Home",199,399,"🧼"],
+["Reusable Food Storage Bags","Kitchen",299,599,"🥡"],
+["Travel Neck Pillow","Lifestyle",499,999,"✈️"],
+["Automatic Soap Dispenser","Home",799,1499,"🧴"],
+["Phone Stand","Electronics",199,399,"📱"],
+["Beauty Brush Set","Beauty",349,699,"🖌️"]
+];
+
+let cart=[];
+
+function renderProducts(list=products){
+
+  const grid=document.getElementById("productGrid");
+
+  grid.innerHTML=list.map((p,index)=>`
+    <div class="card">
+
+      <div class="product-image">
+        ${p[4]}
+      </div>
+
+      <h3>${p[0]}</h3>
+
+      <small>${p[1]}</small>
+
+      <p>
+        <span class="price">₹${p[2]}</span>
+        <span class="old">₹${p[3]}</span>
+      </p>
+
+      <button class="add" onclick="addToCart(${products.indexOf(p)})">
+        Add to Cart
+      </button>
+
+    </div>
+  `).join("");
+}
+
+function addToCart(index){
+
+  cart.push(products[index]);
+
+  document.getElementById("cartCount").innerText=cart.length;
+
+  alert("Product added to cart!");
+}
+
+function showCart(){
+
+  const box=document.getElementById("cartBox");
+  const items=document.getElementById("cartItems");
+
+  box.style.display="flex";
+
+  if(cart.length===0){
+
+    items.innerHTML="<p>Your cart is empty.</p>";
+
+  }else{
+
+    items.innerHTML=cart.map((p,i)=>`
+      <div class="cart-item">
+
+        <span>
+          ${p[4]} ${p[0]}
+        </span>
+
+        <b>₹${p[2]}</b>
+
+        <button onclick="removeCart(${i})">×</button>
+
+      </div>
+    `).join("");
+  }
+
+  let total=cart.reduce((sum,p)=>sum+p[2],0);
+
+  document.getElementById("cartTotal").innerText=total;
+}
+
+function removeCart(index){
+
+  cart.splice(index,1);
+
+  document.getElementById("cartCount").innerText=cart.length;
+
+  showCart();
+}
+
+function closeCart(){
+
+  document.getElementById("cartBox").style.display="none";
+}
+
+function filterProducts(category){
+
+  if(category==="All"){
+
+    renderProducts(products);
+
+  }else{
+
+    renderProducts(
+      products.filter(p=>p[1]===category)
+    );
+  }
+}
+
+function searchProducts(){
+
+  const query=document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+  const result=products.filter(p=>
+    p[0].toLowerCase().includes(query) ||
+    p[1].toLowerCase().includes(query)
+  );
+
+  renderProducts(result);
+}
+
+function checkout(){
+
+  if(cart.length===0){
+
+    alert("Your cart is empty.");
+
+    return;
+  }
+
+  alert(
+    "Checkout is ready for payment-gateway integration.\n\n" +
+    "Next step: connect Razorpay/UPI and your supplier."
+  );
+}
