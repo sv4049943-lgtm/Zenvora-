@@ -400,3 +400,37 @@ footer{
   color:white;
   text-align:center;
  
+.product{
+  position:relative;
+}
+
+.productBadge{
+  position:absolute;
+  top:20px;
+  left:20px;
+  background:#111;
+  color:#f4d27a;
+  padding:6px 9px;
+  border-radius:5px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.rating{
+  font-size:13px;
+  margin:5px;
+}
+
+.price del{
+  color:#999;
+  font-size:13px;
+  margin-left:6px;
+}
+
+.price small{
+  color:#16833b;
+  font-size:11px;
+  margin-left:5px;
+  font-weight:bold;
+}
