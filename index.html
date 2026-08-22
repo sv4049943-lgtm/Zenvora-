@@ -6,56 +6,64 @@
 <title>ZENVORA | Smart Shopping</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
   <div class="logo">ZENVORA</div>
-  <div class="tagline">Smart Shopping, Better Living</div>
-  <input id="search" type="search" placeholder="Search products..." oninput="searchProducts()">
-  <button onclick="showCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+
+  <div class="search">
+    <input id="searchInput" type="text" placeholder="Search products...">
+    <button onclick="searchProducts()">🔍</button>
+  </div>
+
+  <button class="cartBtn" onclick="openCart()">
+    🛒 Cart <span id="cartCount">0</span>
+  </button>
 </header>
 
+<nav>
+  <button onclick="filterProducts('all')">All</button>
+  <button onclick="filterProducts('tape')">Packing</button>
+  <button onclick="filterProducts('home')">Home</button>
+  <button onclick="filterProducts('electronics')">Electronics</button>
+  <button onclick="filterProducts('fashion')">Fashion</button>
+</nav>
+
 <section class="hero">
-  <div>
-    <p>🔥 TRENDING DEALS</p>
-    <h1>Shop Smart.<br>Live Better.</h1>
-    <p>Discover popular products at great prices.</p>
-    <button onclick="document.getElementById('products').scrollIntoView()">
-      Shop Now →
-    </button>
-  </div>
+  <h1>🔥 TRENDING DEALS</h1>
+  <p>Smart Shopping. Better Living.</p>
+  <button onclick="document.getElementById('products').scrollIntoView()">
+    Shop Now →
+  </button>
 </section>
 
-<div class="categories">
-  <button onclick="filterProducts('All')">All</button>
-  <button onclick="filterProducts('Home')">Home</button>
-  <button onclick="filterProducts('Kitchen')">Kitchen</button>
-  <button onclick="filterProducts('Electronics')">Electronics</button>
-  <button onclick="filterProducts('Beauty')">Beauty</button>
-  <button onclick="filterProducts('Lifestyle')">Lifestyle</button>
-</div>
+<h2 class="title">Popular Products</h2>
 
-<main id="products">
-  <h2>🔥 Trending Products</h2>
-  <div id="productGrid" class="grid"></div>
-</main>
+<section id="products" class="products"></section>
 
-<div id="cartBox" class="modal">
-  <div class="modal-content">
-    <button class="close" onclick="closeCart()">×</button>
-    <h2>Your Cart</h2>
+<div id="cartModal" class="modal">
+  <div class="cartBox">
+    <button class="close" onclick="closeCart()">✕</button>
+    <h2>🛒 Your Cart</h2>
+
     <div id="cartItems"></div>
+
     <h3>Total: ₹<span id="cartTotal">0</span></h3>
-    <button class="checkout" onclick="checkout()">Proceed to Checkout</button>
+
+    <button class="checkout" onclick="checkout()">
+      Proceed to Checkout
+    </button>
   </div>
 </div>
 
-<button class="ai" onclick="aiHelp()">🤖 AI Help</button>
-
 <footer>
-  © 2026 ZENVORA — Smart Shopping, Better Living
+  <h3>ZENVORA</h3>
+  <p>Smart Shopping. Better Living.</p>
+  <p>© 2026 ZENVORA</p>
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
