@@ -1,164 +1,117 @@
 const products = [
-["Mini Portable Juicer","Kitchen",699,1299,"🥤"],
-["LED Motion Sensor Light","Home",349,699,"💡"],
-["Magnetic Car Phone Holder","Electronics",299,599,"🚗"],
-["Kitchen Chopper","Kitchen",499,899,"🔪"],
-["5-in-1 Cleaning Brush","Home",249,499,"🧹"],
-["Wireless Earbuds","Electronics",899,1799,"🎧"],
-["Electric Cleaning Scrubber","Home",999,1999,"🧽"],
-["Makeup Organizer","Beauty",399,799,"💄"],
-["USB Rechargeable Fan","Electronics",599,999,"🌀"],
-["Vacuum Storage Bags","Home",299,599,"🛍️"],
-["Oil Spray Bottle","Kitchen",199,399,"🫙"],
-["Smart LED Strip","Electronics",449,899,"🌈"],
-["Neck & Shoulder Massager","Lifestyle",1299,2499,"💆"],
-["Travel Organizer Bag","Lifestyle",349,699,"🧳"],
-["Silicone Air Fryer Liner","Kitchen",249,499,"🍟"],
-["Mini Bluetooth Speaker","Electronics",499,999,"🔊"],
-["Face Ice Roller","Beauty",199,399,"🧊"],
-["Foldable Laptop Stand","Electronics",549,999,"💻"],
-["Waterproof Storage Box","Home",449,799,"📦"],
-["Portable Blender","Kitchen",799,1499,"🥝"],
-["Rechargeable Torch","Electronics",399,799,"🔦"],
-["Hair Styling Brush","Beauty",699,1399,"💇"],
-["Shoe Cleaning Kit","Lifestyle",299,599,"👟"],
-["Kitchen Measuring Set","Kitchen",249,499,"🥄"],
-["Car Cleaning Gel","Lifestyle",199,399,"🚙"],
-["Desk Cable Organizer","Electronics",149,299,"🔌"],
-["Microfiber Cleaning Cloth","Home",199,399,"🧼"],
-["Reusable Food Storage Bags","Kitchen",299,599,"🥡"],
-["Travel Neck Pillow","Lifestyle",499,999,"✈️"],
-["Automatic Soap Dispenser","Home",799,1499,"🧴"],
-["Phone Stand","Electronics",199,399,"📱"],
-["Beauty Brush Set","Beauty",349,699,"🖌️"]
+  {name:"Premium Packing Tape",price:149,cat:"tape",emoji:"📦"},
+  {name:"Strong Parcel Tape",price:199,cat:"tape",emoji:"📦"},
+  {name:"Brown Packaging Tape",price:129,cat:"tape",emoji:"🟫"},
+  {name:"Transparent Tape Pack",price:179,cat:"tape",emoji:"📦"},
+  {name:"Kitchen Storage Box",price:299,cat:"home",emoji:"🏠"},
+  {name:"LED Night Lamp",price:249,cat:"electronics",emoji:"💡"},
+  {name:"Wireless Earbuds",price:699,cat:"electronics",emoji:"🎧"},
+  {name:"Mobile Stand",price:199,cat:"electronics",emoji:"📱"},
+  {name:"Smart Watch",price:899,cat:"electronics",emoji:"⌚"},
+  {name:"USB Charging Cable",price:149,cat:"electronics",emoji:"🔌"},
+  {name:"Men's Casual T-Shirt",price:399,cat:"fashion",emoji:"👕"},
+  {name:"Women's Fashion Top",price:449,cat:"fashion",emoji:"👚"},
+  {name:"Travel Bag",price:599,cat:"fashion",emoji:"👜"},
+  {name:"Sunglasses",price:299,cat:"fashion",emoji:"🕶️"},
+  {name:"Wallet",price:249,cat:"fashion",emoji:"👛"}
 ];
 
-let cart=[];
+let cart = [];
 
-function renderProducts(list=products){
+function displayProducts(list = products){
+  const box = document.getElementById("products");
 
-  const grid=document.getElementById("productGrid");
+  if(list.length === 0){
+    box.innerHTML = "<h3>No products found</h3>";
+    return;
+  }
 
-  grid.innerHTML=list.map((p,index)=>`
-    <div class="card">
-
-      <div class="product-image">
-        ${p[4]}
-      </div>
-
-      <h3>${p[0]}</h3>
-
-      <small>${p[1]}</small>
-
-      <p>
-        <span class="price">₹${p[2]}</span>
-        <span class="old">₹${p[3]}</span>
-      </p>
-
-      <button class="add" onclick="addToCart(${products.indexOf(p)})">
-        Add to Cart
+  box.innerHTML = list.map((p,i)=>`
+    <div class="product">
+      <div class="emoji">${p.emoji}</div>
+      <h3>${p.name}</h3>
+      <div class="price">₹${p.price}</div>
+      <button onclick="addToCart(${i})">
+        🛒 Add to Cart
       </button>
-
     </div>
   `).join("");
 }
 
 function addToCart(index){
-
   cart.push(products[index]);
-
-  document.getElementById("cartCount").innerText=cart.length;
-
+  updateCart();
   alert("Product added to cart!");
 }
 
-function showCart(){
+function updateCart(){
+  document.getElementById("cartCount").textContent = cart.length;
 
-  const box=document.getElementById("cartBox");
-  const items=document.getElementById("cartItems");
+  let total = cart.reduce((sum,p)=>sum+p.price,0);
+  document.getElementById("cartTotal").textContent = total;
 
-  box.style.display="flex";
+  const box = document.getElementById("cartItems");
 
-  if(cart.length===0){
-
-    items.innerHTML="<p>Your cart is empty.</p>";
-
-  }else{
-
-    items.innerHTML=cart.map((p,i)=>`
-      <div class="cart-item">
-
-        <span>
-          ${p[4]} ${p[0]}
-        </span>
-
-        <b>₹${p[2]}</b>
-
-        <button onclick="removeCart(${i})">×</button>
-
-      </div>
-    `).join("");
+  if(cart.length === 0){
+    box.innerHTML = "<p>Your cart is empty.</p>";
+    return;
   }
 
-  let total=cart.reduce((sum,p)=>sum+p[2],0);
-
-  document.getElementById("cartTotal").innerText=total;
+  box.innerHTML = cart.map((p,i)=>`
+    <div class="cartItem">
+      <span>${p.emoji} ${p.name}</span>
+      <span>₹${p.price}
+      <button onclick="removeFromCart(${i})">❌</button>
+      </span>
+    </div>
+  `).join("");
 }
 
-function removeCart(index){
-
+function removeFromCart(index){
   cart.splice(index,1);
+  updateCart();
+}
 
-  document.getElementById("cartCount").innerText=cart.length;
-
-  showCart();
+function openCart(){
+  document.getElementById("cartModal").style.display="block";
+  updateCart();
 }
 
 function closeCart(){
-
-  document.getElementById("cartBox").style.display="none";
+  document.getElementById("cartModal").style.display="none";
 }
 
 function filterProducts(category){
-
-  if(category==="All"){
-
-    renderProducts(products);
-
+  if(category==="all"){
+    displayProducts(products);
   }else{
-
-    renderProducts(
-      products.filter(p=>p[1]===category)
-    );
+    displayProducts(products.filter(p=>p.cat===category));
   }
 }
 
 function searchProducts(){
+  const text = document.getElementById("searchInput").value.toLowerCase();
 
-  const query=document
-    .getElementById("search")
-    .value
-    .toLowerCase();
-
-  const result=products.filter(p=>
-    p[0].toLowerCase().includes(query) ||
-    p[1].toLowerCase().includes(query)
+  const result = products.filter(p =>
+    p.name.toLowerCase().includes(text)
   );
 
-  renderProducts(result);
+  displayProducts(result);
 }
 
 function checkout(){
-
   if(cart.length===0){
-
-    alert("Your cart is empty.");
-
+    alert("Your cart is empty!");
     return;
   }
 
   alert(
-    "Checkout is ready for payment-gateway integration.\n\n" +
-    "Next step: connect Razorpay/UPI and your supplier."
+    "Checkout selected! Total amount: ₹" +
+    cart.reduce((sum,p)=>sum+p.price,0)
   );
 }
+
+document.getElementById("searchInput").addEventListener("input",searchProducts);
+
+displayProducts();
+updateCart();
