@@ -18,79 +18,105 @@ const products = [
 
 let cart = [];
 
-function displayProducts(list = products){
+function displayProducts(list = products) {
   const box = document.getElementById("products");
 
-  if(list.length === 0){
+  if (!box) return;
+
+  if (list.length === 0) {
     box.innerHTML = "<h3>No products found</h3>";
     return;
   }
 
-  box.innerHTML = list.map((p,i)=>`
+  box.innerHTML = list.map((p) => `
     <div class="product">
       <div class="emoji">${p.emoji}</div>
       <h3>${p.name}</h3>
       <div class="price">₹${p.price}</div>
-      <button onclick="addToCart(${i})">
+      <button onclick="addToCart('${p.name}')">
         🛒 Add to Cart
       </button>
     </div>
   `).join("");
 }
 
-function addToCart(index){
-  cart.push(products[index]);
-  updateCart();
-  alert("Product added to cart!");
+function addToCart(name) {
+  const product = products.find(p => p.name === name);
+
+  if (product) {
+    cart.push(product);
+    updateCart();
+    alert("Product added to cart!");
+  }
 }
 
-function updateCart(){
-  document.getElementById("cartCount").textContent = cart.length;
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCart();
+}
 
-  let total = cart.reduce((sum,p)=>sum+p.price,0);
-  document.getElementById("cartTotal").textContent = total;
+function updateCart() {
+  const count = document.getElementById("cartCount");
+  const totalBox = document.getElementById("cartTotal");
+  const itemsBox = document.getElementById("cartItems");
 
-  const box = document.getElementById("cartItems");
+  if (count) count.textContent = cart.length;
 
-  if(cart.length === 0){
-    box.innerHTML = "<p>Your cart is empty.</p>";
+  const total = cart.reduce((sum, p) => sum + p.price, 0);
+
+  if (totalBox) totalBox.textContent = total;
+
+  if (!itemsBox) return;
+
+  if (cart.length === 0) {
+    itemsBox.innerHTML = "<p>Your cart is empty.</p>";
     return;
   }
 
-  box.innerHTML = cart.map((p,i)=>`
+  itemsBox.innerHTML = cart.map((p, i) => `
     <div class="cartItem">
       <span>${p.emoji} ${p.name}</span>
-      <span>₹${p.price}
-      <button onclick="removeFromCart(${i})">❌</button>
+      <span>
+        ₹${p.price}
+        <button onclick="removeFromCart(${i})">❌</button>
       </span>
     </div>
   `).join("");
 }
 
-function removeFromCart(index){
-  cart.splice(index,1);
-  updateCart();
-}
+function openCart() {
+  const modal = document.getElementById("cartModal");
 
-function openCart(){
-  document.getElementById("cartModal").style.display="block";
-  updateCart();
-}
-
-function closeCart(){
-  document.getElementById("cartModal").style.display="none";
-}
-
-function filterProducts(category){
-  if(category==="all"){
-    displayProducts(products);
-  }else{
-    displayProducts(products.filter(p=>p.cat===category));
+  if (modal) {
+    modal.style.display = "block";
+    updateCart();
   }
 }
 
-function searchProducts(){
-  const text = document.getElementById("searchInput").value.toLowerCase();
+function closeCart() {
+  const modal = document.getElementById("cartModal");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+
+function filterProducts(category) {
+  if (category === "all") {
+    displayProducts(products);
+  } else {
+    displayProducts(
+      products.filter(p => p.cat === category)
+    );
+  }
+}
+
+function searchProducts() {
+  const input = document.getElementById("searchInput");
+
+  if (!input) return;
+
+  const text = input.value.toLowerCase().trim();
 
   const result = products.filter(p =>
     p.name.toLowerCase().includes(text)
@@ -99,19 +125,26 @@ function searchProducts(){
   displayProducts(result);
 }
 
-function checkout(){
-  if(cart.length===0){
+function checkout() {
+  if (cart.length === 0) {
     alert("Your cart is empty!");
     return;
   }
 
-  alert(
-    "Checkout selected! Total amount: ₹" +
-    cart.reduce((sum,p)=>sum+p.price,0)
-  );
+  const total = cart.reduce((sum, p) => sum + p.price, 0);
+
+  alert("Checkout selected! Total amount: ₹" + total);
 }
 
-document.getElementById("searchInput").addEventListener("input",searchProducts);
+document.addEventListener("DOMContentLoaded", function() {
 
-displayProducts();
-updateCart();
+  displayProducts();
+  updateCart();
+
+  const searchInput = document.getElementById("searchInput");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", searchProducts);
+  }
+
+});
