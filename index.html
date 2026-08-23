@@ -2,370 +2,661 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ZENVORA - Smart Shopping, Better Living">
-<title>ZENVORA | Premium Shopping</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZENVORA | Smart Shopping</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
---black:#111;
---gold:#f5b800;
---bg:#f6f7f9;
---white:#fff;
---muted:#777;
---green:#138a45;
-}
-body{
-font-family:Arial,Helvetica,sans-serif;
-background:var(--bg);
-color:#151515;
-}
-button,input{font:inherit}
-button{cursor:pointer}
+body{font-family:Arial,sans-serif;background:#f5f6f8;color:#111}
+button{cursor:pointer;border:0}
 
-.top{
-background:#080808;color:#aaa;text-align:center;
-padding:8px;font-size:12px
-}
+.top{background:#111;color:#fff;text-align:center;padding:8px;font-size:12px}
+
 header{
 background:#111;color:white;padding:16px 5%;
-display:flex;align-items:center;gap:25px;
-position:sticky;top:0;z-index:50;
+display:flex;align-items:center;gap:20px;
+position:sticky;top:0;z-index:20
 }
+
 .logo{font-size:27px;font-weight:900;letter-spacing:2px}
-.logo span{color:var(--gold)}
-.search{flex:1;display:flex;max-width:600px;margin:auto}
-.search input{
-width:100%;border:0;outline:0;padding:14px 18px;
-border-radius:28px 0 0 28px
-}
-.search button{
-border:0;background:var(--gold);padding:0 22px;
-border-radius:0 28px 28px 0;font-weight:bold
-}
-.cartBtn{
-border:1px solid #444;background:#fff;color:#111;
-padding:11px 17px;border-radius:25px;font-weight:bold
-}
+.logo span{color:#f5b800}
+
+.search{display:flex;flex:1;max-width:600px;margin:auto}
+.search input{width:100%;padding:14px 18px;border:0;outline:0;border-radius:28px 0 0 28px}
+.search button{background:#f5b800;padding:0 20px;border-radius:0 28px 28px 0;font-weight:bold}
+
+.cartBtn{background:white;padding:11px 18px;border-radius:25px;font-weight:bold}
 
 nav{
-background:white;padding:13px 5%;display:flex;
-gap:25px;overflow:auto;border-bottom:1px solid #eee
+background:#fff;padding:13px 5%;display:flex;gap:25px;
+overflow:auto;border-bottom:1px solid #eee
 }
-nav button{
-background:none;border:0;font-weight:bold;white-space:nowrap
-}
+nav button{background:none;font-weight:bold;white-space:nowrap}
 
 .hero{
-width:90%;max-width:1250px;margin:25px auto;
-min-height:410px;border-radius:28px;padding:60px;
+width:90%;max-width:1200px;margin:25px auto;
+min-height:380px;border-radius:28px;padding:55px;
 display:flex;align-items:center;
-background:
-linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.45)),
-url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=85")
-center/cover;color:white
+background:linear-gradient(135deg,#111,#363636);
+color:white
 }
+
 .heroBox{max-width:650px}
 .badge{
-display:inline-block;background:var(--gold);color:#111;
+display:inline-block;background:#f5b800;color:#111;
 padding:8px 15px;border-radius:20px;font-weight:bold;
 margin-bottom:18px
 }
-.hero h1{font-size:54px;line-height:1.05;margin-bottom:18px}
-.hero p{font-size:18px;color:#ddd;line-height:1.6;margin-bottom:28px}
+.hero h1{font-size:52px;line-height:1.05;margin-bottom:18px}
+.hero p{font-size:18px;color:#ddd;line-height:1.6;margin-bottom:25px}
+
 .primary{
-border:0;background:var(--gold);padding:14px 28px;
+background:#f5b800;color:#111;padding:14px 28px;
 border-radius:30px;font-weight:bold
 }
 
-.section{width:90%;max-width:1250px;margin:45px auto}
+.section{width:90%;max-width:1200px;margin:45px auto}
+
 .heading{
-display:flex;justify-content:space-between;align-items:center;
-margin-bottom:22px
+display:flex;justify-content:space-between;
+align-items:center;margin-bottom:20px
 }
 .heading h2{font-size:29px}
-.muted{color:var(--muted);font-size:14px}
 
 .categories{
 display:grid;grid-template-columns:repeat(6,1fr);gap:15px
 }
+
 .category{
-background:white;border:1px solid #eee;border-radius:18px;
-padding:22px 10px;text-align:center;transition:.25s
+background:white;padding:22px 10px;text-align:center;
+border-radius:17px;box-shadow:0 5px 20px #0000000c;
+transition:.2s
 }
-.category:hover{transform:translateY(-5px);box-shadow:0 10px 25px #0001}
-.category b{display:block;margin-top:8px}
-.icon{font-size:34px}
+.category:hover{transform:translateY(-5px)}
+.category div{font-size:35px;margin-bottom:8px}
 
 .products{
 display:grid;grid-template-columns:repeat(5,1fr);gap:18px
 }
+
 .card{
 background:white;border-radius:18px;overflow:hidden;
-box-shadow:0 5px 22px #0000000d;position:relative;
-transition:.25s
+box-shadow:0 5px 20px #00000010;transition:.2s
 }
-.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px #0002}
-.pic{height:205px;background:#f0f1f3;position:relative}
-.pic img{width:100%;height:100%;object-fit:cover}
-.discount{
-position:absolute;left:10px;top:10px;background:#e73535;
-color:white;padding:5px 8px;border-radius:7px;font-size:11px;
-font-weight:bold
+.card:hover{transform:translateY(-5px)}
+
+.productVisual{
+height:190px;background:linear-gradient(135deg,#eee,#fafafa);
+display:flex;align-items:center;justify-content:center;
+font-size:75px
 }
-.wish{
-position:absolute;right:10px;top:10px;width:34px;height:34px;
-border:0;border-radius:50%;background:white;font-size:17px
-}
+
 .info{padding:15px}
-.info h3{font-size:15px;line-height:1.35;height:40px}
-.rating{color:#f2a900;font-size:13px;margin:8px 0}
-.price{font-size:19px;font-weight:800}
-.old{font-size:12px;color:#999;text-decoration:line-through;margin-left:5px}
-.off{font-size:12px;color:var(--green);font-weight:bold;margin-top:4px}
+.info h3{font-size:16px;height:38px;line-height:1.3}
+
+.rating{color:#f2a800;margin:7px 0;font-size:13px}
+.price{font-size:19px;font-weight:bold}
+.old{text-decoration:line-through;color:#999;font-size:12px;margin-left:5px}
+.discount{color:#138a45;font-size:12px;font-weight:bold;margin-top:4px}
+
 .add{
-width:100%;border:0;background:#111;color:white;
-padding:11px;border-radius:9px;margin-top:12px;font-weight:bold
+width:100%;margin-top:12px;padding:11px;
+background:#111;color:white;border-radius:9px;font-weight:bold
 }
-.add:hover{background:var(--gold);color:#111}
+.add:hover{background:#f5b800;color:#111}
 
 .banner{
-border-radius:22px;background:#111;color:white;
-padding:40px;margin-top:45px;display:flex;
-justify-content:space-between;align-items:center;gap:20px
+background:#111;color:white;border-radius:20px;
+padding:35px;display:flex;justify-content:space-between;
+align-items:center;gap:20px
 }
-.banner h2{font-size:30px;margin-bottom:8px}
 
 .features{
 display:grid;grid-template-columns:repeat(4,1fr);gap:15px
 }
 .feature{
-background:white;padding:25px;border-radius:17px;text-align:center
+background:white;border-radius:16px;padding:25px;text-align:center
 }
-.feature strong{display:block;margin:8px 0}
+.feature strong{display:block;margin:8px}
 
 footer{
-background:#111;color:#fff;margin-top:60px;padding:45px 5%
+background:#111;color:white;margin-top:50px;
+padding:40px 5%;text-align:center
 }
-.footerGrid{
-max-width:1250px;margin:auto;
-display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px
-}
-footer h3{margin-bottom:15px}
-footer p,footer li{color:#aaa;font-size:14px;line-height:2}
-footer ul{list-style:none}
 
 .overlay{
 display:none;position:fixed;inset:0;background:#0008;
 z-index:100;justify-content:flex-end
 }
 .overlay.show{display:flex}
+
 .cartPanel{
-width:min(430px,100%);background:white;height:100%;
-padding:22px;overflow:auto
+background:white;width:min(420px,100%);
+height:100%;padding:22px;overflow:auto
 }
+
 .cartHead{
-display:flex;justify-content:space-between;
-align-items:center;margin-bottom:20px
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:20px
 }
-.close{border:0;background:#eee;border-radius:50%;width:35px;height:35px}
+
+.close{
+width:35px;height:35px;border-radius:50%;background:#eee
+}
+
 .cartItem{
-display:flex;gap:12px;padding:15px 0;border-bottom:1px solid #eee
+display:flex;gap:12px;border-bottom:1px solid #eee;
+padding:14px 0
 }
-.cartItem img{width:65px;height:65px;object-fit:cover;border-radius:10px}
-.qty{
-display:flex;gap:8px;align-items:center;margin-top:7px
+
+.cartIcon{
+width:60px;height:60px;background:#f1f1f1;
+display:flex;align-items:center;justify-content:center;
+font-size:30px;border-radius:10px
 }
-.qty button{width:27px;height:27px;border:1px solid #ddd;background:white}
+
 .total{
-font-size:21px;font-weight:bold;
-display:flex;justify-content:space-between;margin:20px 0
+display:flex;justify-content:space-between;
+font-size:21px;font-weight:bold;margin:22px 0
 }
+
 .checkout{
-width:100%;border:0;background:var(--gold);
-padding:14px;border-radius:10px;font-weight:bold
+width:100%;padding:14px;background:#f5b800;
+border-radius:10px;font-weight:bold
 }
 
-.modal{
-display:none;position:fixed;inset:0;background:#0009;
-z-index:120;align-items:center;justify-content:center;padding:20px
-}
-.modal.show{display:flex}
-.modalBox{
-background:white;border-radius:22px;max-width:850px;width:100%;
-padding:25px;max-height:90vh;overflow:auto
-}
-.modalGrid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
-.modalGrid img{width:100%;border-radius:15px}
+.empty{text-align:center;padding:30px;color:#777}
 
-.empty{text-align:center;padding:35px;color:#777}
-
-@media(max-width:1100px){
+@media(max-width:1050px){
 .products{grid-template-columns:repeat(4,1fr)}
 .categories{grid-template-columns:repeat(3,1fr)}
 }
-@media(max-width:800px){
-.products{grid-template-columns:repeat(2,1fr)}
-.features{grid-template-columns:repeat(2,1fr)}
-.footerGrid{grid-template-columns:1fr 1fr}
-.hero{padding:40px 25px}
-.hero h1{font-size:40px}
+
+@media(max-width:750px){
 header{flex-wrap:wrap}
 .search{order:3;flex-basis:100%}
+.products{grid-template-columns:repeat(2,1fr)}
+.features{grid-template-columns:repeat(2,1fr)}
+.hero{padding:40px 25px}
+.hero h1{font-size:40px}
 }
+
 @media(max-width:500px){
-.products{grid-template-columns:1fr 1fr;gap:10px}
-.pic{height:165px}
+.products{gap:10px}
+.productVisual{height:160px}
 .categories{grid-template-columns:repeat(2,1fr)}
-.hero{min-height:340px}
 .hero h1{font-size:34px}
-.info{padding:11px}
 .banner{display:block}
-.footerGrid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">🚚 FREE SHIPPING ON ORDERS ABOVE ₹999 &nbsp; | &nbsp; 🔒 SECURE SHOPPING</div>
+<div class="top">
+🚚 FREE SHIPPING ABOVE ₹999 &nbsp; | &nbsp; 🔒 SECURE SHOPPING
+</div>
 
 <header>
+
 <div class="logo">ZEN<span>VORA</span></div>
 
 <div class="search">
-<input id="search" placeholder="Search products, gadgets, fashion...">
-<button onclick="searchProducts()">Search</button>
+<input id="searchBox" type="text" placeholder="Search products...">
+<button onclick="searchProducts()">SEARCH</button>
 </div>
 
-<button class="cartBtn" onclick="openCart()">🛒 Cart <span id="cartCount">0</span></button>
+<button class="cartBtn" onclick="openCart()">
+🛒 Cart (<span id="cartCount">0</span>)
+</button>
+
 </header>
 
 <nav>
-<button onclick="filterProducts('all')">All</button>
-<button onclick="filterProducts('electronics')">Electronics</button>
-<button onclick="filterProducts('home')">Home</button>
-<button onclick="filterProducts('fashion')">Fashion</button>
-<button onclick="filterProducts('beauty')">Beauty</button>
-<button onclick="filterProducts('lifestyle')">Lifestyle</button>
+<button onclick="showCategory('all')">All</button>
+<button onclick="showCategory('electronics')">Electronics</button>
+<button onclick="showCategory('home')">Home</button>
+<button onclick="showCategory('fashion')">Fashion</button>
+<button onclick="showCategory('beauty')">Beauty</button>
+<button onclick="showCategory('lifestyle')">Lifestyle</button>
 </nav>
 
 <section class="hero">
+
 <div class="heroBox">
-<div class="badge">🔥 TRENDING DEALS</div>
-<h1>Shop Smart.<br>Live Better.</h1>
-<p>Discover products people are loving right now — selected for value, style and everyday convenience.</p>
-<button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">SHOP NOW →</button>
+
+<div class="badge" onclick="showCategory('all')">
+🔥 TRENDING DEALS
 </div>
+
+<h1>Shop Smart.<br>Live Better.</h1>
+
+<p>
+Discover trending products, useful gadgets and amazing deals —
+all in one place.
+</p>
+
+<button class="primary" onclick="goProducts()">
+SHOP NOW →
+</button>
+
+</div>
+
 </section>
 
 <section class="section">
-<div class="heading"><h2>Shop by Category</h2></div>
+
+<div class="heading">
+<h2>Shop by Category</h2>
+</div>
 
 <div class="categories">
-<div class="category" onclick="filterProducts('electronics')"><div class="icon">🎧</div><b>Electronics</b></div>
-<div class="category" onclick="filterProducts('home')"><div class="icon">🏠</div><b>Home</b></div>
-<div class="category" onclick="filterProducts('fashion')"><div class="icon">👕</div><b>Fashion</b></div>
-<div class="category" onclick="filterProducts('beauty')"><div class="icon">✨</div><b>Beauty</b></div>
-<div class="category" onclick="filterProducts('lifestyle')"><div class="icon">🎒</div><b>Lifestyle</b></div>
-<div class="category" onclick="filterProducts('all')"><div class="icon">🔥</div><b>Trending</b></div>
+
+<div class="category" onclick="showCategory('electronics')">
+<div>🎧</div><b>Electronics</b>
 </div>
+
+<div class="category" onclick="showCategory('home')">
+<div>🏠</div><b>Home</b>
+</div>
+
+<div class="category" onclick="showCategory('fashion')">
+<div>👕</div><b>Fashion</b>
+</div>
+
+<div class="category" onclick="showCategory('beauty')">
+<div>✨</div><b>Beauty</b>
+</div>
+
+<div class="category" onclick="showCategory('lifestyle')">
+<div>🎒</div><b>Lifestyle</b>
+</div>
+
+<div class="category" onclick="showCategory('all')">
+<div>🔥</div><b>Trending</b>
+</div>
+
+</div>
+
 </section>
 
 <section class="section" id="products">
+
 <div class="heading">
-<div><h2>🔥 Trending Products</h2><span class="muted">Hand-picked deals</span></div>
-<span class="muted" id="resultText"></span>
+<h2>🔥 Trending Products</h2>
+<span id="resultCount"></span>
 </div>
 
 <div class="products" id="productGrid"></div>
 
-<div class="empty" id="empty" style="display:none">No products found.</div>
 </section>
 
 <section class="section">
+
 <div class="banner">
+
 <div>
-<h2>⚡ Limited Time Deals</h2>
-<p>Grab today's best offers before they're gone.</p>
+<h2>⚡ LIMITED TIME DEALS</h2>
+<p>Best value products at special prices.</p>
 </div>
-<button class="primary" onclick="filterProducts('all')">EXPLORE DEALS</button>
+
+<button class="primary" onclick="showCategory('all')">
+EXPLORE DEALS
+</button>
+
 </div>
+
 </section>
 
 <section class="section">
+
 <div class="features">
-<div class="feature">🚚<strong>Fast Delivery</strong><span class="muted">Reliable shipping</span></div>
-<div class="feature">🔒<strong>Secure Shopping</strong><span class="muted">Protected checkout</span></div>
-<div class="feature">💳<strong>Easy Payments</strong><span class="muted">Multiple options</span></div>
-<div class="feature">💬<strong>Customer Support</strong><span class="muted">We're here to help</span></div>
+
+<div class="feature">
+🚚
+<strong>Fast Delivery</strong>
+<small>Reliable shipping</small>
 </div>
+
+<div class="feature">
+🔒
+<strong>Secure Shopping</strong>
+<small>Safe experience</small>
+</div>
+
+<div class="feature">
+💳
+<strong>Easy Payments</strong>
+<small>Simple checkout</small>
+</div>
+
+<div class="feature">
+💬
+<strong>Support</strong>
+<small>We're here to help</small>
+</div>
+
+</div>
+
 </section>
 
 <footer>
-<div class="footerGrid">
-<div>
-<h3>ZENVORA</h3>
+
+<h2>ZENVORA</h2>
 <p>Smart Shopping. Better Living.</p>
-<p>Discover useful, trending and value-for-money products.</p>
-</div>
-<div><h3>Shop</h3><ul><li>Trending</li><li>Electronics</li><li>Home</li><li>Fashion</li></ul></div>
-<div><h3>Help</h3><ul><li>Contact Us</li><li>Shipping</li><li>Returns</li><li>FAQ</li></ul></div>
-<div><h3>Contact</h3><p>📧 support@zenvora.store</p><p>💬 WhatsApp Support</p></div>
-</div>
 <br>
-<center><small>© 2026 ZENVORA. All Rights Reserved.</small></center>
+<small>© 2026 ZENVORA. All Rights Reserved.</small>
+
 </footer>
 
-<div class="overlay" id="cartOverlay" onclick="closeCart(event)">
-<div class="cartPanel" onclick="event.stopPropagation()">
-<div class="cartHead"><h2>Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
-<div id="cartItems"></div>
-<div class="total"><span>Total</span><span>₹<span id="total">0</span></span></div>
-<button class="checkout" onclick="checkout()">PROCEED TO CHECKOUT</button>
-</div>
+
+<div class="overlay" id="cartOverlay">
+
+<div class="cartPanel">
+
+<div class="cartHead">
+<h2>Your Cart</h2>
+<button class="close" onclick="closeCart()">×</button>
 </div>
 
-<div class="modal" id="productModal">
-<div class="modalBox">
-<button class="close" onclick="closeModal()">×</button>
-<div id="modalContent"></div>
+<div id="cartItems"></div>
+
+<div class="total">
+<span>Total</span>
+<span>₹<span id="cartTotal">0</span></span>
 </div>
+
+<button class="checkout" onclick="checkout()">
+PROCEED TO CHECKOUT
+</button>
+
 </div>
+
+</div>
+
 
 <script>
+
 const products=[
-["Wireless Earbuds","electronics",699,1499,"🎧","https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80"],
-["Smart Watch","electronics",999,1999,"⌚","https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"],
-["Bluetooth Speaker","electronics",899,1799,"🔊","https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80"],
-["Wireless Headphones","electronics",1299,2499,"🎧","https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"],
-["Power Bank","electronics",799,1499,"🔋","https://images.unsplash.com/photo-1609592424923-6c4b1d3e4f4b?auto=format&fit=crop&w=700&q=80"],
 
-["LED Desk Lamp","home",599,999,"💡","https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80"],
-["Modern Table Lamp","home",799,1399,"💡","https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=700&q=80"],
-["Storage Organizer","home",449,799,"🗄️","https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80"],
-["Kitchen Organizer","home",499,899,"🍽️","https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80"],
-["Premium Cushion Set","home",699,1199,"🛋️","https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80"],
+["Wireless Earbuds","electronics",699,1499,"🎧"],
+["Smart Watch","electronics",999,1999,"⌚"],
+["Bluetooth Speaker","electronics",899,1799,"🔊"],
+["Wireless Headphones","electronics",1299,2499,"🎧"],
+["Power Bank","electronics",799,1499,"🔋"],
+["Mobile Stand","electronics",299,599,"📱"],
+["Laptop Stand","electronics",899,1599,"💻"],
+["USB LED Light","electronics",249,499,"💡"],
 
-["Oversized T-Shirt","fashion",499,899,"👕","https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"],
-["Casual Hoodie","fashion",899,1599,"🧥","https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80"],
-["Classic Backpack","fashion",799,1499,"🎒","https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"],
-["Premium Sunglasses","fashion",599,1199,"🕶️","https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"],
-["Everyday Sneakers","fashion",1299,2499,"👟","https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"],
+["LED Desk Lamp","home",599,999,"💡"],
+["Modern Table Lamp","home",799,1399,"🛋️"],
+["Storage Organizer","home",449,799,"🗄️"],
+["Kitchen Organizer","home",499,899,"🍽️"],
+["Premium Cushion Set","home",699,1199,"🛋️"],
+["Smart Night Light","home",399,799,"🌙"],
 
-["Face Roller","beauty",399,799,"✨","https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=700&q=80"],
-["Makeup Organizer","beauty",499,899,"💄","https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80"],
-["Beauty Mirror","beauty",699,1299,"🪞","https://images.unsplash.com/photo-1616627561950-9f746e330187?auto=format&fit=crop&w=700&q=80"],
-["Self Care Kit","beauty",799,1399,"🧴","https://images.unsplash.com/photo-1556229010-aa3f7ff66b24?auto=format&fit=crop&w=700&q=80"],
-["Travel Grooming Kit","beauty",599,1099,"🧳","https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=700&q=80"],
+["Oversized T-Shirt","fashion",499,899,"👕"],
+["Casual Hoodie","fashion",899,1599,"🧥"],
+["Classic Backpack","fashion",799,1499,"🎒"],
+["Premium Sunglasses","fashion",599,1199,"🕶️"],
+["Everyday Sneakers","fashion",1299,2499,"👟"],
 
-["Travel Bottle Set","lifestyle",299,599,"🧴","https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80"],
-["Gym Water Bottle","lifestyle",449,799,"🥤","https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80"],
-["Fitness Resistance Bands","lifestyle",499,899,"🏋️","https://images.unsplash.com/photo-1598971639058-a4e7f5a4e8d3?auto=format&fit=crop&w=700&q=80"],
-["Car Phone Holder","lifestyle",399,699,"🚗","https://images.unsplash.com/photo-1587033411391-5d9e51cce126?auto=format&fit=crop&w=700&q=80"],
-["Mini Tripod","lifestyle",499,999,"📷","https://images.unsplash.com/photo-1606986628253-4b2d1e3a6f0b?auto=format&fit=crop&w=700&q=80"],
+["Face Roller","beauty",399,799,"✨"],
+["Makeup Organizer","beauty",499,899,"💄"],
+["Beauty Mirror","beauty",699,1299,"🪞"],
+["Self Care Kit","beauty",799,1399,"🧴"],
+["Grooming Kit","beauty",599,1099,"🧳"],
 
-["Mobile Stand","electronics",299,599,"📱","https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=700&q=80"],
-["USB LED Light","electronics",249,499,"💡","https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=700&q=80"],
-["Laptop Stand","electronics",899,1599,"💻","
+["Travel Bottle Set","lifestyle",299,599,"🧴"],
+["Gym Water Bottle","lifestyle",449,799,"🥤"],
+["Resistance Bands","lifestyle",499,899,"🏋️"],
+["Car Phone Holder","lifestyle",399,699,"🚗"],
+["Mini Tripod","lifestyle",499,999,"📷"],
+["Travel Bag","lifestyle",999,1799,"🧳"]
+];
+
+let cart=[];
+let currentProducts=products;
+
+function renderProducts(list){
+
+const grid=document.getElementById("productGrid");
+
+grid.innerHTML="";
+
+document.getElementById("resultCount").textContent=
+list.length+" products";
+
+if(list.length===0){
+grid.innerHTML='<div class="empty">No products found.</div>';
+return;
+}
+
+list.forEach((p,i)=>{
+
+const discount=Math.round((1-p[2]/p[3])*100);
+
+grid.innerHTML+=`
+
+<div class="card">
+
+<div class="productVisual">
+${p[4]}
+</div>
+
+<div class="info">
+
+<h3>${p[0]}</h3>
+
+<div class="rating">
+★★★★★
+</div>
+
+<div class="price">
+₹${p[2].toLocaleString()}
+<span class="old">
+₹${p[3].toLocaleString()}
+</span>
+</div>
+
+<div class="discount">
+${discount}% OFF
+</div>
+
+<button class="add" onclick="addToCart(${products.indexOf(p)})">
+ADD TO CART
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+function goProducts(){
+
+document.getElementById("products")
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+function showCategory(category){
+
+if(category==="all"){
+
+currentProducts=products;
+
+}else{
+
+currentProducts=
+products.filter(p=>p[1]===category);
+
+}
+
+renderProducts(currentProducts);
+
+goProducts();
+
+}
+
+function searchProducts(){
+
+const q=
+document.getElementById("searchBox")
+.value.toLowerCase()
+.trim();
+
+if(!q){
+
+renderProducts(products);
+
+return;
+
+}
+
+const result=products.filter(p=>
+p[0].toLowerCase().includes(q) ||
+p[1].toLowerCase().includes(q)
+);
+
+currentProducts=result;
+
+renderProducts(result);
+
+goProducts();
+
+}
+
+function addToCart(index){
+
+cart.push(products[index]);
+
+updateCart();
+
+openCart();
+
+}
+
+function updateCart(){
+
+document.getElementById("cartCount")
+.textContent=cart.length;
+
+const box=document.getElementById("cartItems");
+
+if(cart.length===0){
+
+box.innerHTML=
+'<div class="empty">Your cart is empty 🛒</div>';
+
+document.getElementById("cartTotal").textContent="0";
+
+return;
+
+}
+
+let total=0;
+
+box.innerHTML="";
+
+cart.forEach((p,i)=>{
+
+total+=p[2];
+
+box.innerHTML+=`
+
+<div class="cartItem">
+
+<div class="cartIcon">
+${p[4]}
+</div>
+
+<div>
+
+<b>${p[0]}</b>
+
+<br>
+
+₹${p[2].toLocaleString()}
+
+<br>
+
+<button onclick="removeFromCart(${i})"
+style="margin-top:7px;background:#eee;padding:5px 9px;border-radius:5px">
+REMOVE
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("cartTotal")
+.textContent=total.toLocaleString();
+
+}
+
+function removeFromCart(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+function openCart(){
+
+document.getElementById("cartOverlay")
+.classList.add("show");
+
+}
+
+function closeCart(){
+
+document.getElementById("cartOverlay")
+.classList.remove("show");
+
+}
+
+function checkout(){
+
+if(cart.length===0){
+
+alert("Your cart is empty.");
+
+return;
+
+}
+
+alert(
+"Checkout is ready for the next stage. Payment gateway and real order system will be connected after the storefront is finalized."
+);
+
+}
+
+document.getElementById("searchBox")
+.addEventListener("keyup",function(e){
+
+if(e.key==="Enter"){
+
+searchProducts();
+
+}
+
+});
+
+renderProducts(products);
+
+updateCart();
+
+</script>
+
+</body>
+</html>
