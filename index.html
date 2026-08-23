@@ -2,537 +2,370 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ZENVORA | Premium Smart Shopping</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ZENVORA - Smart Shopping, Better Living">
+<title>ZENVORA | Premium Shopping</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--black:#111;
+--gold:#f5b800;
+--bg:#f6f7f9;
+--white:#fff;
+--muted:#777;
+--green:#138a45;
 }
-
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f6f7f9;
-  color:#111;
+font-family:Arial,Helvetica,sans-serif;
+background:var(--bg);
+color:#151515;
 }
+button,input{font:inherit}
+button{cursor:pointer}
 
-/* HEADER */
+.top{
+background:#080808;color:#aaa;text-align:center;
+padding:8px;font-size:12px
+}
 header{
-  background:#111;
-  color:#fff;
-  padding:16px 5%;
-  display:flex;
-  align-items:center;
-  gap:25px;
-  position:sticky;
-  top:0;
-  z-index:100;
+background:#111;color:white;padding:16px 5%;
+display:flex;align-items:center;gap:25px;
+position:sticky;top:0;z-index:50;
 }
-
-.logo{
-  font-size:27px;
-  font-weight:800;
-  letter-spacing:2px;
-}
-
-.search{
-  flex:1;
-  max-width:550px;
-  display:flex;
-  margin:auto;
-}
-
+.logo{font-size:27px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--gold)}
+.search{flex:1;display:flex;max-width:600px;margin:auto}
 .search input{
-  width:100%;
-  padding:14px 18px;
-  border:0;
-  outline:0;
-  border-radius:30px 0 0 30px;
-  font-size:15px;
+width:100%;border:0;outline:0;padding:14px 18px;
+border-radius:28px 0 0 28px
 }
-
 .search button{
-  border:0;
-  padding:0 22px;
-  border-radius:0 30px 30px 0;
-  background:#f6b800;
-  font-weight:bold;
+border:0;background:var(--gold);padding:0 22px;
+border-radius:0 28px 28px 0;font-weight:bold
+}
+.cartBtn{
+border:1px solid #444;background:#fff;color:#111;
+padding:11px 17px;border-radius:25px;font-weight:bold
 }
 
-.cart{
-  background:#fff;
-  color:#111;
-  padding:12px 18px;
-  border-radius:30px;
-  font-weight:bold;
+nav{
+background:white;padding:13px 5%;display:flex;
+gap:25px;overflow:auto;border-bottom:1px solid #eee
+}
+nav button{
+background:none;border:0;font-weight:bold;white-space:nowrap
 }
 
-/* HERO */
 .hero{
-  width:90%;
-  max-width:1200px;
-  margin:30px auto;
-  min-height:390px;
-  border-radius:28px;
-  padding:60px;
-  display:flex;
-  align-items:center;
-  background:linear-gradient(135deg,#111 0%,#292929 55%,#444 100%);
-  color:white;
-  box-shadow:0 15px 40px rgba(0,0,0,.15);
+width:90%;max-width:1250px;margin:25px auto;
+min-height:410px;border-radius:28px;padding:60px;
+display:flex;align-items:center;
+background:
+linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.45)),
+url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=85")
+center/cover;color:white
 }
-
-.hero-content{
-  max-width:650px;
-}
-
+.heroBox{max-width:650px}
 .badge{
-  display:inline-block;
-  background:#f6b800;
-  color:#111;
-  padding:8px 15px;
-  border-radius:20px;
-  font-weight:bold;
-  margin-bottom:18px;
+display:inline-block;background:var(--gold);color:#111;
+padding:8px 15px;border-radius:20px;font-weight:bold;
+margin-bottom:18px
+}
+.hero h1{font-size:54px;line-height:1.05;margin-bottom:18px}
+.hero p{font-size:18px;color:#ddd;line-height:1.6;margin-bottom:28px}
+.primary{
+border:0;background:var(--gold);padding:14px 28px;
+border-radius:30px;font-weight:bold
 }
 
-.hero h1{
-  font-size:52px;
-  line-height:1.08;
-  margin-bottom:18px;
+.section{width:90%;max-width:1250px;margin:45px auto}
+.heading{
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:22px
 }
-
-.hero p{
-  color:#ddd;
-  font-size:18px;
-  line-height:1.6;
-  margin-bottom:28px;
-}
-
-.shop-btn{
-  background:#f6b800;
-  border:0;
-  padding:15px 30px;
-  border-radius:30px;
-  font-weight:bold;
-  font-size:15px;
-}
-
-/* CATEGORY */
-.section{
-  width:90%;
-  max-width:1200px;
-  margin:45px auto;
-}
-
-.title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:22px;
-}
-
-.title h2{
-  font-size:29px;
-}
+.heading h2{font-size:29px}
+.muted{color:var(--muted);font-size:14px}
 
 .categories{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
+display:grid;grid-template-columns:repeat(6,1fr);gap:15px
 }
-
 .category{
-  background:#fff;
-  padding:24px;
-  text-align:center;
-  border-radius:18px;
-  box-shadow:0 6px 22px rgba(0,0,0,.06);
-  font-weight:bold;
-  transition:.3s;
+background:white;border:1px solid #eee;border-radius:18px;
+padding:22px 10px;text-align:center;transition:.25s
 }
+.category:hover{transform:translateY(-5px);box-shadow:0 10px 25px #0001}
+.category b{display:block;margin-top:8px}
+.icon{font-size:34px}
 
-.category:hover{
-  transform:translateY(-5px);
-}
-
-.category-icon{
-  font-size:40px;
-  margin-bottom:10px;
-}
-
-/* PRODUCTS */
 .products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:22px;
+display:grid;grid-template-columns:repeat(5,1fr);gap:18px
 }
-
 .card{
-  background:#fff;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 7px 25px rgba(0,0,0,.07);
-  transition:.3s;
+background:white;border-radius:18px;overflow:hidden;
+box-shadow:0 5px 22px #0000000d;position:relative;
+transition:.25s
 }
-
-.card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 15px 35px rgba(0,0,0,.14);
-}
-
-.product-img{
-  height:220px;
-  background:#f0f1f3;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:75px;
-}
-
-.info{
-  padding:18px;
-}
-
-.info h3{
-  font-size:18px;
-  margin-bottom:9px;
-}
-
-.rating{
-  color:#f5a800;
-  margin-bottom:10px;
-}
-
-.price{
-  font-size:21px;
-  font-weight:bold;
-}
-
-.old{
-  color:#999;
-  font-size:14px;
-  text-decoration:line-through;
-  margin-left:5px;
-}
-
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px #0002}
+.pic{height:205px;background:#f0f1f3;position:relative}
+.pic img{width:100%;height:100%;object-fit:cover}
 .discount{
-  color:#148a3b;
-  font-size:13px;
-  font-weight:bold;
-  margin-top:5px;
+position:absolute;left:10px;top:10px;background:#e73535;
+color:white;padding:5px 8px;border-radius:7px;font-size:11px;
+font-weight:bold
 }
-
+.wish{
+position:absolute;right:10px;top:10px;width:34px;height:34px;
+border:0;border-radius:50%;background:white;font-size:17px
+}
+.info{padding:15px}
+.info h3{font-size:15px;line-height:1.35;height:40px}
+.rating{color:#f2a900;font-size:13px;margin:8px 0}
+.price{font-size:19px;font-weight:800}
+.old{font-size:12px;color:#999;text-decoration:line-through;margin-left:5px}
+.off{font-size:12px;color:var(--green);font-weight:bold;margin-top:4px}
 .add{
-  width:100%;
-  margin-top:15px;
-  padding:12px;
-  border:0;
-  border-radius:10px;
-  background:#111;
-  color:white;
-  font-weight:bold;
+width:100%;border:0;background:#111;color:white;
+padding:11px;border-radius:9px;margin-top:12px;font-weight:bold
 }
+.add:hover{background:var(--gold);color:#111}
 
-/* OFFER */
-.offer{
-  margin-top:45px;
-  padding:42px 25px;
-  text-align:center;
-  border-radius:22px;
-  background:#f6b800;
+.banner{
+border-radius:22px;background:#111;color:white;
+padding:40px;margin-top:45px;display:flex;
+justify-content:space-between;align-items:center;gap:20px
 }
+.banner h2{font-size:30px;margin-bottom:8px}
 
-.offer h2{
-  font-size:30px;
-  margin-bottom:10px;
+.features{
+display:grid;grid-template-columns:repeat(4,1fr);gap:15px
 }
-
-.offer p{
-  margin-bottom:20px;
+.feature{
+background:white;padding:25px;border-radius:17px;text-align:center
 }
+.feature strong{display:block;margin:8px 0}
 
-.dark-btn{
-  background:#111;
-  color:white;
-  border:0;
-  padding:13px 25px;
-  border-radius:25px;
-  font-weight:bold;
-}
-
-/* FOOTER */
 footer{
-  background:#111;
-  color:#fff;
-  text-align:center;
-  padding:38px 20px;
-  margin-top:60px;
+background:#111;color:#fff;margin-top:60px;padding:45px 5%
+}
+.footerGrid{
+max-width:1250px;margin:auto;
+display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px
+}
+footer h3{margin-bottom:15px}
+footer p,footer li{color:#aaa;font-size:14px;line-height:2}
+footer ul{list-style:none}
+
+.overlay{
+display:none;position:fixed;inset:0;background:#0008;
+z-index:100;justify-content:flex-end
+}
+.overlay.show{display:flex}
+.cartPanel{
+width:min(430px,100%);background:white;height:100%;
+padding:22px;overflow:auto
+}
+.cartHead{
+display:flex;justify-content:space-between;
+align-items:center;margin-bottom:20px
+}
+.close{border:0;background:#eee;border-radius:50%;width:35px;height:35px}
+.cartItem{
+display:flex;gap:12px;padding:15px 0;border-bottom:1px solid #eee
+}
+.cartItem img{width:65px;height:65px;object-fit:cover;border-radius:10px}
+.qty{
+display:flex;gap:8px;align-items:center;margin-top:7px
+}
+.qty button{width:27px;height:27px;border:1px solid #ddd;background:white}
+.total{
+font-size:21px;font-weight:bold;
+display:flex;justify-content:space-between;margin:20px 0
+}
+.checkout{
+width:100%;border:0;background:var(--gold);
+padding:14px;border-radius:10px;font-weight:bold
 }
 
-footer h3{
-  font-size:23px;
-  letter-spacing:2px;
-  margin-bottom:8px;
+.modal{
+display:none;position:fixed;inset:0;background:#0009;
+z-index:120;align-items:center;justify-content:center;padding:20px
 }
-
-footer p{
-  color:#aaa;
+.modal.show{display:flex}
+.modalBox{
+background:white;border-radius:22px;max-width:850px;width:100%;
+padding:25px;max-height:90vh;overflow:auto
 }
+.modalGrid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.modalGrid img{width:100%;border-radius:15px}
 
-/* MOBILE */
-@media(max-width:900px){
+.empty{text-align:center;padding:35px;color:#777}
 
-  .products{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .hero h1{
-    font-size:42px;
-  }
+@media(max-width:1100px){
+.products{grid-template-columns:repeat(4,1fr)}
+.categories{grid-template-columns:repeat(3,1fr)}
 }
-
-@media(max-width:600px){
-
-  header{
-    flex-wrap:wrap;
-  }
-
-  .search{
-    order:3;
-    flex-basis:100%;
-  }
-
-  .hero{
-    padding:40px 25px;
-    min-height:330px;
-  }
-
-  .hero h1{
-    font-size:36px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
-  .categories{
-    grid-template-columns:repeat(2,1fr);
-  }
+@media(max-width:800px){
+.products{grid-template-columns:repeat(2,1fr)}
+.features{grid-template-columns:repeat(2,1fr)}
+.footerGrid{grid-template-columns:1fr 1fr}
+.hero{padding:40px 25px}
+.hero h1{font-size:40px}
+header{flex-wrap:wrap}
+.search{order:3;flex-basis:100%}
+}
+@media(max-width:500px){
+.products{grid-template-columns:1fr 1fr;gap:10px}
+.pic{height:165px}
+.categories{grid-template-columns:repeat(2,1fr)}
+.hero{min-height:340px}
+.hero h1{font-size:34px}
+.info{padding:11px}
+.banner{display:block}
+.footerGrid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
+<div class="top">🚚 FREE SHIPPING ON ORDERS ABOVE ₹999 &nbsp; | &nbsp; 🔒 SECURE SHOPPING</div>
+
 <header>
+<div class="logo">ZEN<span>VORA</span></div>
 
-  <div class="logo">ZENVORA</div>
+<div class="search">
+<input id="search" placeholder="Search products, gadgets, fashion...">
+<button onclick="searchProducts()">Search</button>
+</div>
 
-  <div class="search">
-    <input type="text" placeholder="Search products...">
-    <button>Search</button>
-  </div>
-
-  <div class="cart">🛒 Cart (0)</div>
-
+<button class="cartBtn" onclick="openCart()">🛒 Cart <span id="cartCount">0</span></button>
 </header>
 
+<nav>
+<button onclick="filterProducts('all')">All</button>
+<button onclick="filterProducts('electronics')">Electronics</button>
+<button onclick="filterProducts('home')">Home</button>
+<button onclick="filterProducts('fashion')">Fashion</button>
+<button onclick="filterProducts('beauty')">Beauty</button>
+<button onclick="filterProducts('lifestyle')">Lifestyle</button>
+</nav>
 
 <section class="hero">
-
-  <div class="hero-content">
-
-    <div class="badge">🔥 TRENDING DEALS</div>
-
-    <h1>Shop Smart.<br>Live Better.</h1>
-
-    <p>
-      Discover trending products, premium deals and smart choices
-      — all in one place.
-    </p>
-
-    <button class="shop-btn">
-      SHOP NOW →
-    </button>
-
-  </div>
-
+<div class="heroBox">
+<div class="badge">🔥 TRENDING DEALS</div>
+<h1>Shop Smart.<br>Live Better.</h1>
+<p>Discover products people are loving right now — selected for value, style and everyday convenience.</p>
+<button class="primary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">SHOP NOW →</button>
+</div>
 </section>
-
 
 <section class="section">
+<div class="heading"><h2>Shop by Category</h2></div>
 
-  <div class="title">
-    <h2>Shop by Category</h2>
-  </div>
-
-  <div class="categories">
-
-    <div class="category">
-      <div class="category-icon">🎧</div>
-      Electronics
-    </div>
-
-    <div class="category">
-      <div class="category-icon">⌚</div>
-      Smart Gadgets
-    </div>
-
-    <div class="category">
-      <div class="category-icon">🏠</div>
-      Home & Living
-    </div>
-
-    <div class="category">
-      <div class="category-icon">🎒</div>
-      Lifestyle
-    </div>
-
-  </div>
-
+<div class="categories">
+<div class="category" onclick="filterProducts('electronics')"><div class="icon">🎧</div><b>Electronics</b></div>
+<div class="category" onclick="filterProducts('home')"><div class="icon">🏠</div><b>Home</b></div>
+<div class="category" onclick="filterProducts('fashion')"><div class="icon">👕</div><b>Fashion</b></div>
+<div class="category" onclick="filterProducts('beauty')"><div class="icon">✨</div><b>Beauty</b></div>
+<div class="category" onclick="filterProducts('lifestyle')"><div class="icon">🎒</div><b>Lifestyle</b></div>
+<div class="category" onclick="filterProducts('all')"><div class="icon">🔥</div><b>Trending</b></div>
+</div>
 </section>
 
+<section class="section" id="products">
+<div class="heading">
+<div><h2>🔥 Trending Products</h2><span class="muted">Hand-picked deals</span></div>
+<span class="muted" id="resultText"></span>
+</div>
+
+<div class="products" id="productGrid"></div>
+
+<div class="empty" id="empty" style="display:none">No products found.</div>
+</section>
 
 <section class="section">
-
-  <div class="title">
-    <h2>🔥 Trending Products</h2>
-    <span>View All →</span>
-  </div>
-
-  <div class="products">
-
-
-    <div class="card">
-
-      <div class="product-img">🎧</div>
-
-      <div class="info">
-
-        <h3>Wireless Earbuds</h3>
-
-        <div class="rating">★★★★★</div>
-
-        <div class="price">
-          ₹699
-          <span class="old">₹1,499</span>
-        </div>
-
-        <div class="discount">53% OFF</div>
-
-        <button class="add">ADD TO CART</button>
-
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="product-img">⌚</div>
-
-      <div class="info">
-
-        <h3>Smart Watch</h3>
-
-        <div class="rating">★★★★★</div>
-
-        <div class="price">
-          ₹999
-          <span class="old">₹1,999</span>
-        </div>
-
-        <div class="discount">50% OFF</div>
-
-        <button class="add">ADD TO CART</button>
-
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="product-img">🎒</div>
-
-      <div class="info">
-
-        <h3>Premium Backpack</h3>
-
-        <div class="rating">★★★★☆</div>
-
-        <div class="price">
-          ₹799
-          <span class="old">₹1,499</span>
-        </div>
-
-        <div class="discount">47% OFF</div>
-
-        <button class="add">ADD TO CART</button>
-
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <div class="product-img">💡</div>
-
-      <div class="info">
-
-        <h3>Smart LED Light</h3>
-
-        <div class="rating">★★★★★</div>
-
-        <div class="price">
-          ₹499
-          <span class="old">₹999</span>
-        </div>
-
-        <div class="discount">50% OFF</div>
-
-        <button class="add">ADD TO CART</button>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-
-  <div class="offer">
-
-    <h2>⚡ LIMITED TIME OFFER</h2>
-
-    <p>
-      Upgrade your shopping experience with ZENVORA.
-    </p>
-
-    <button class="dark-btn">
-      EXPLORE DEALS
-    </button>
-
-  </div>
-
+<div class="banner">
+<div>
+<h2>⚡ Limited Time Deals</h2>
+<p>Grab today's best offers before they're gone.</p>
+</div>
+<button class="primary" onclick="filterProducts('all')">EXPLORE DEALS</button>
+</div>
 </section>
 
+<section class="section">
+<div class="features">
+<div class="feature">🚚<strong>Fast Delivery</strong><span class="muted">Reliable shipping</span></div>
+<div class="feature">🔒<strong>Secure Shopping</strong><span class="muted">Protected checkout</span></div>
+<div class="feature">💳<strong>Easy Payments</strong><span class="muted">Multiple options</span></div>
+<div class="feature">💬<strong>Customer Support</strong><span class="muted">We're here to help</span></div>
+</div>
+</section>
 
 <footer>
+<div class="footerGrid">
+<div>
+<h3>ZENVORA</h3>
+<p>Smart Shopping. Better Living.</p>
+<p>Discover useful, trending and value-for-money products.</p>
+</div>
+<div><h3>Shop</h3><ul><li>Trending</li><li>Electronics</li><li>Home</li><li>Fashion</li></ul></div>
+<div><h3>Help</h3><ul><li>Contact Us</li><li>Shipping</li><li>Returns</li><li>FAQ</li></ul></div>
+<div><h3>Contact</h3><p>📧 support@zenvora.store</p><p>💬 WhatsApp Support</p></div>
+</div>
+<br>
+<center><small>© 2026 ZENVORA. All Rights Reserved.</small></center>
+</footer>
 
-  <h3>ZENVORA</h3>
+<div class="overlay" id="cartOverlay" onclick="closeCart(event)">
+<div class="cartPanel" onclick="event.stopPropagation()">
+<div class="cartHead"><h2>Your Cart</h2><button class="close" onclick="closeCart()">×</button></div>
+<div id="cartItems"></div>
+<div class="total"><span>Total</span><span>₹<span id="total">0</span></span></div>
+<button class="checkout" onclick="checkout()">PROCEED TO CHECKOUT</button>
+</div>
+</div>
 
-  <p>Smart Shopping.
+<div class="modal" id="productModal">
+<div class="modalBox">
+<button class="close" onclick="closeModal()">×</button>
+<div id="modalContent"></div>
+</div>
+</div>
+
+<script>
+const products=[
+["Wireless Earbuds","electronics",699,1499,"🎧","https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=700&q=80"],
+["Smart Watch","electronics",999,1999,"⌚","https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"],
+["Bluetooth Speaker","electronics",899,1799,"🔊","https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80"],
+["Wireless Headphones","electronics",1299,2499,"🎧","https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"],
+["Power Bank","electronics",799,1499,"🔋","https://images.unsplash.com/photo-1609592424923-6c4b1d3e4f4b?auto=format&fit=crop&w=700&q=80"],
+
+["LED Desk Lamp","home",599,999,"💡","https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80"],
+["Modern Table Lamp","home",799,1399,"💡","https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=700&q=80"],
+["Storage Organizer","home",449,799,"🗄️","https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=80"],
+["Kitchen Organizer","home",499,899,"🍽️","https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80"],
+["Premium Cushion Set","home",699,1199,"🛋️","https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80"],
+
+["Oversized T-Shirt","fashion",499,899,"👕","https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"],
+["Casual Hoodie","fashion",899,1599,"🧥","https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=80"],
+["Classic Backpack","fashion",799,1499,"🎒","https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"],
+["Premium Sunglasses","fashion",599,1199,"🕶️","https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80"],
+["Everyday Sneakers","fashion",1299,2499,"👟","https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"],
+
+["Face Roller","beauty",399,799,"✨","https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=700&q=80"],
+["Makeup Organizer","beauty",499,899,"💄","https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80"],
+["Beauty Mirror","beauty",699,1299,"🪞","https://images.unsplash.com/photo-1616627561950-9f746e330187?auto=format&fit=crop&w=700&q=80"],
+["Self Care Kit","beauty",799,1399,"🧴","https://images.unsplash.com/photo-1556229010-aa3f7ff66b24?auto=format&fit=crop&w=700&q=80"],
+["Travel Grooming Kit","beauty",599,1099,"🧳","https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=700&q=80"],
+
+["Travel Bottle Set","lifestyle",299,599,"🧴","https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80"],
+["Gym Water Bottle","lifestyle",449,799,"🥤","https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80"],
+["Fitness Resistance Bands","lifestyle",499,899,"🏋️","https://images.unsplash.com/photo-1598971639058-a4e7f5a4e8d3?auto=format&fit=crop&w=700&q=80"],
+["Car Phone Holder","lifestyle",399,699,"🚗","https://images.unsplash.com/photo-1587033411391-5d9e51cce126?auto=format&fit=crop&w=700&q=80"],
+["Mini Tripod","lifestyle",499,999,"📷","https://images.unsplash.com/photo-1606986628253-4b2d1e3a6f0b?auto=format&fit=crop&w=700&q=80"],
+
+["Mobile Stand","electronics",299,599,"📱","https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=700&q=80"],
+["USB LED Light","electronics",249,499,"💡","https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=700&q=80"],
+["Laptop Stand","electronics",899,1599,"💻","
