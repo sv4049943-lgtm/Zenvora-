@@ -4,134 +4,178 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ZENVORA | Smart Shopping</title>
+<title>ZENVORA | Premium Smart Shopping</title>
 
-
+<style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,sans-serif;
 }
 
 body{
-  background:#f7f7f8;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f6f7f9;
   color:#111;
 }
 
+/* HEADER */
 header{
   background:#111;
-  color:white;
-  padding:16px 6%;
+  color:#fff;
+  padding:16px 5%;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:20px;
+  gap:25px;
   position:sticky;
   top:0;
   z-index:100;
 }
 
 .logo{
-  font-size:25px;
+  font-size:27px;
   font-weight:800;
   letter-spacing:2px;
 }
 
 .search{
   flex:1;
-  max-width:500px;
+  max-width:550px;
   display:flex;
+  margin:auto;
 }
 
 .search input{
   width:100%;
-  padding:13px 18px;
-  border:none;
+  padding:14px 18px;
+  border:0;
+  outline:0;
   border-radius:30px 0 0 30px;
-  outline:none;
   font-size:15px;
 }
 
 .search button{
-  border:none;
-  padding:0 20px;
+  border:0;
+  padding:0 22px;
   border-radius:0 30px 30px 0;
-  background:#f5b700;
-  cursor:pointer;
+  background:#f6b800;
   font-weight:bold;
 }
 
 .cart{
-  background:white;
+  background:#fff;
   color:#111;
-  padding:11px 18px;
-  border-radius:25px;
+  padding:12px 18px;
+  border-radius:30px;
   font-weight:bold;
 }
 
+/* HERO */
 .hero{
-  margin:25px auto;
   width:90%;
   max-width:1200px;
-  min-height:360px;
-  border-radius:25px;
-  padding:60px 7%;
+  margin:30px auto;
+  min-height:390px;
+  border-radius:28px;
+  padding:60px;
   display:flex;
   align-items:center;
-  background:linear-gradient(135deg,#111,#333);
+  background:linear-gradient(135deg,#111 0%,#292929 55%,#444 100%);
   color:white;
+  box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.hero-content{
+  max-width:650px;
+}
+
+.badge{
+  display:inline-block;
+  background:#f6b800;
+  color:#111;
+  padding:8px 15px;
+  border-radius:20px;
+  font-weight:bold;
+  margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:48px;
-  margin-bottom:15px;
+  font-size:52px;
+  line-height:1.08;
+  margin-bottom:18px;
 }
 
 .hero p{
   color:#ddd;
   font-size:18px;
-  margin-bottom:25px;
+  line-height:1.6;
+  margin-bottom:28px;
 }
 
-.shop{
-  background:#f5b700;
-  border:none;
-  padding:14px 28px;
+.shop-btn{
+  background:#f6b800;
+  border:0;
+  padding:15px 30px;
   border-radius:30px;
   font-weight:bold;
-  cursor:pointer;
-  font-size:16px;
+  font-size:15px;
 }
 
+/* CATEGORY */
 .section{
   width:90%;
   max-width:1200px;
-  margin:40px auto;
+  margin:45px auto;
 }
 
-.section-title{
+.title{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
+  margin-bottom:22px;
 }
 
-.section-title h2{
-  font-size:28px;
+.title h2{
+  font-size:29px;
 }
 
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.category{
+  background:#fff;
+  padding:24px;
+  text-align:center;
+  border-radius:18px;
+  box-shadow:0 6px 22px rgba(0,0,0,.06);
+  font-weight:bold;
+  transition:.3s;
+}
+
+.category:hover{
+  transform:translateY(-5px);
+}
+
+.category-icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+/* PRODUCTS */
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:22px;
 }
 
 .card{
-  background:white;
-  border-radius:18px;
+  background:#fff;
+  border-radius:20px;
   overflow:hidden;
-  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  box-shadow:0 7px 25px rgba(0,0,0,.07);
   transition:.3s;
 }
 
@@ -141,12 +185,12 @@ header{
 }
 
 .product-img{
-  height:210px;
-  background:#eee;
+  height:220px;
+  background:#f0f1f3;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:70px;
+  font-size:75px;
 }
 
 .info{
@@ -154,7 +198,8 @@ header{
 }
 
 .info h3{
-  margin-bottom:8px;
+  font-size:18px;
+  margin-bottom:9px;
 }
 
 .rating{
@@ -163,35 +208,42 @@ header{
 }
 
 .price{
-  font-size:20px;
+  font-size:21px;
   font-weight:bold;
 }
 
 .old{
   color:#999;
-  text-decoration:line-through;
   font-size:14px;
-  margin-left:7px;
+  text-decoration:line-through;
+  margin-left:5px;
+}
+
+.discount{
+  color:#148a3b;
+  font-size:13px;
+  font-weight:bold;
+  margin-top:5px;
 }
 
 .add{
   width:100%;
-  margin-top:14px;
+  margin-top:15px;
   padding:12px;
-  border:none;
+  border:0;
   border-radius:10px;
   background:#111;
   color:white;
   font-weight:bold;
-  cursor:pointer;
 }
 
+/* OFFER */
 .offer{
-  margin-top:40px;
-  padding:35px;
-  border-radius:20px;
-  background:#f5b700;
+  margin-top:45px;
+  padding:42px 25px;
   text-align:center;
+  border-radius:22px;
+  background:#f6b800;
 }
 
 .offer h2{
@@ -199,15 +251,56 @@ header{
   margin-bottom:10px;
 }
 
-footer{
-  margin-top:50px;
-  background:#111;
-  color:white;
-  text-align:center;
-  padding:30px;
+.offer p{
+  margin-bottom:20px;
 }
 
-@media(max-width:700px){
+.dark-btn{
+  background:#111;
+  color:white;
+  border:0;
+  padding:13px 25px;
+  border-radius:25px;
+  font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:38px 20px;
+  margin-top:60px;
+}
+
+footer h3{
+  font-size:23px;
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+
+footer p{
+  color:#aaa;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+}
+
+@media(max-width:600px){
+
   header{
     flex-wrap:wrap;
   }
@@ -218,16 +311,24 @@ footer{
   }
 
   .hero{
-    min-height:300px;
     padding:40px 25px;
+    min-height:330px;
   }
 
   .hero h1{
-    font-size:35px;
+    font-size:36px;
   }
 
   .hero p{
     font-size:15px;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 </style>
@@ -236,6 +337,7 @@ footer{
 <body>
 
 <header>
+
   <div class="logo">ZENVORA</div>
 
   <div class="search">
@@ -244,39 +346,193 @@ footer{
   </div>
 
   <div class="cart">🛒 Cart (0)</div>
+
 </header>
 
+
 <section class="hero">
-  <div>
+
+  <div class="hero-content">
+
+    <div class="badge">🔥 TRENDING DEALS</div>
+
     <h1>Shop Smart.<br>Live Better.</h1>
-    <p>Discover trending products, amazing deals and smart choices.</p>
-    <button class="shop">SHOP NOW →</button>
+
+    <p>
+      Discover trending products, premium deals and smart choices
+      — all in one place.
+    </p>
+
+    <button class="shop-btn">
+      SHOP NOW →
+    </button>
+
   </div>
+
 </section>
+
 
 <section class="section">
 
-  <div class="section-title">
-    <h2>🔥 Trending Deals</h2>
+  <div class="title">
+    <h2>Shop by Category</h2>
+  </div>
+
+  <div class="categories">
+
+    <div class="category">
+      <div class="category-icon">🎧</div>
+      Electronics
+    </div>
+
+    <div class="category">
+      <div class="category-icon">⌚</div>
+      Smart Gadgets
+    </div>
+
+    <div class="category">
+      <div class="category-icon">🏠</div>
+      Home & Living
+    </div>
+
+    <div class="category">
+      <div class="category-icon">🎒</div>
+      Lifestyle
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="title">
+    <h2>🔥 Trending Products</h2>
     <span>View All →</span>
   </div>
 
   <div class="products">
 
-    <div class="card">
-      <div class="product-img">🎧</div>
-      <div class="info">
-        <h3>Wireless Earbuds</h3>
-        <div class="rating">★★★★★</div>
-        <div class="price">₹699 <span class="old">₹1,499</span></div>
-        <button class="add">ADD TO CART</button>
-      </div>
-    </div>
 
     <div class="card">
-      <div class="product-img">⌚</div>
+
+      <div class="product-img">🎧</div>
+
       <div class="info">
-        <h3>Smart Watch</h3>
+
+        <h3>Wireless Earbuds</h3>
+
         <div class="rating">★★★★★</div>
-        <div class="price">₹999 <span class="old">₹1,999</span></div>
-        <button class="add">ADD TO
+
+        <div class="price">
+          ₹699
+          <span class="old">₹1,499</span>
+        </div>
+
+        <div class="discount">53% OFF</div>
+
+        <button class="add">ADD TO CART</button>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="product-img">⌚</div>
+
+      <div class="info">
+
+        <h3>Smart Watch</h3>
+
+        <div class="rating">★★★★★</div>
+
+        <div class="price">
+          ₹999
+          <span class="old">₹1,999</span>
+        </div>
+
+        <div class="discount">50% OFF</div>
+
+        <button class="add">ADD TO CART</button>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="product-img">🎒</div>
+
+      <div class="info">
+
+        <h3>Premium Backpack</h3>
+
+        <div class="rating">★★★★☆</div>
+
+        <div class="price">
+          ₹799
+          <span class="old">₹1,499</span>
+        </div>
+
+        <div class="discount">47% OFF</div>
+
+        <button class="add">ADD TO CART</button>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="product-img">💡</div>
+
+      <div class="info">
+
+        <h3>Smart LED Light</h3>
+
+        <div class="rating">★★★★★</div>
+
+        <div class="price">
+          ₹499
+          <span class="old">₹999</span>
+        </div>
+
+        <div class="discount">50% OFF</div>
+
+        <button class="add">ADD TO CART</button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="offer">
+
+    <h2>⚡ LIMITED TIME OFFER</h2>
+
+    <p>
+      Upgrade your shopping experience with ZENVORA.
+    </p>
+
+    <button class="dark-btn">
+      EXPLORE DEALS
+    </button>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <h3>ZENVORA</h3>
+
+  <p>Smart Shopping.
