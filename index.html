@@ -2,204 +2,281 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ZENVORA | Smart Shopping</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f7f7f8;
+  color:#111;
+}
+
+header{
+  background:#111;
+  color:white;
+  padding:16px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.search{
+  flex:1;
+  max-width:500px;
+  display:flex;
+}
+
+.search input{
+  width:100%;
+  padding:13px 18px;
+  border:none;
+  border-radius:30px 0 0 30px;
+  outline:none;
+  font-size:15px;
+}
+
+.search button{
+  border:none;
+  padding:0 20px;
+  border-radius:0 30px 30px 0;
+  background:#f5b700;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.cart{
+  background:white;
+  color:#111;
+  padding:11px 18px;
+  border-radius:25px;
+  font-weight:bold;
+}
+
+.hero{
+  margin:25px auto;
+  width:90%;
+  max-width:1200px;
+  min-height:360px;
+  border-radius:25px;
+  padding:60px 7%;
+  display:flex;
+  align-items:center;
+  background:linear-gradient(135deg,#111,#333);
+  color:white;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  color:#ddd;
+  font-size:18px;
+  margin-bottom:25px;
+}
+
+.shop{
+  background:#f5b700;
+  border:none;
+  padding:14px 28px;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.section{
+  width:90%;
+  max-width:1200px;
+  margin:40px auto;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.section-title h2{
+  font-size:28px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 15px 35px rgba(0,0,0,.14);
+}
+
+.product-img{
+  height:210px;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:70px;
+}
+
+.info{
+  padding:18px;
+}
+
+.info h3{
+  margin-bottom:8px;
+}
+
+.rating{
+  color:#f5a800;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:20px;
+  font-weight:bold;
+}
+
+.old{
+  color:#999;
+  text-decoration:line-through;
+  font-size:14px;
+  margin-left:7px;
+}
+
+.add{
+  width:100%;
+  margin-top:14px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#111;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.offer{
+  margin-top:40px;
+  padding:35px;
+  border-radius:20px;
+  background:#f5b700;
+  text-align:center;
+}
+
+.offer h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+footer{
+  margin-top:50px;
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+@media(max-width:700px){
+  header{
+    flex-wrap:wrap;
+  }
+
+  .search{
+    order:3;
+    flex-basis:100%;
+  }
+
+  .hero{
+    min-height:300px;
+    padding:40px 25px;
+  }
+
+  .hero h1{
+    font-size:35px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-
   <div class="logo">ZENVORA</div>
 
   <div class="search">
-    <input id="searchInput"
-           type="text"
-           placeholder="Search products, brands & deals...">
-    <button onclick="searchProducts()">⌕</button>
+    <input type="text" placeholder="Search products...">
+    <button>Search</button>
   </div>
 
-  <button class="cartBtn" onclick="openCart()">
-    🛒 Cart <span id="cartCount">0</span>
-  </button>
-
+  <div class="cart">🛒 Cart (0)</div>
 </header>
 
-<nav>
-  <button onclick="filterProducts('all')">All</button>
-  <button onclick="filterProducts('tape')">Packing</button>
-  <button onclick="filterProducts('home')">Home</button>
-  <button onclick="filterProducts('electronics')">Electronics</button>
-  <button onclick="filterProducts('fashion')">Fashion</button>
-</nav>
-
-
-<!-- HERO -->
-
 <section class="hero">
-
-  <div class="heroContent">
-
-    <div class="heroTag">✨ ZENVORA PREMIUM STORE</div>
-
-    <h1>
-      Smart Shopping.<br>
-      <span>Better Living.</span>
-    </h1>
-
-    <p>
-      Discover trending products, everyday essentials
-      and exclusive deals — all in one place.
-    </p>
-
-    <div class="heroButtons">
-
-      <button
-        class="heroPrimary"
-        onclick="document.getElementById('products').scrollIntoView()">
-        Shop Now →
-      </button>
-
-      <button
-        class="heroSecondary"
-        onclick="filterProducts('all')">
-        Explore Deals
-      </button>
-
-    </div>
-
+  <div>
+    <h1>Shop Smart.<br>Live Better.</h1>
+    <p>Discover trending products, amazing deals and smart choices.</p>
+    <button class="shop">SHOP NOW →</button>
   </div>
-
 </section>
-
-
-<!-- TRUST -->
-
-<section class="trust">
-
-  <div>
-    <strong>🚚 Fast Delivery</strong>
-    <span>Reliable shipping</span>
-  </div>
-
-  <div>
-    <strong>🔒 Secure Shopping</strong>
-    <span>Safe & trusted checkout</span>
-  </div>
-
-  <div>
-    <strong>💎 Quality Products</strong>
-    <span>Carefully selected</span>
-  </div>
-
-  <div>
-    <strong>↩️ Easy Returns</strong>
-    <span>Simple return process</span>
-  </div>
-
-</section>
-
-
-<!-- TRENDING -->
 
 <section class="section">
 
-  <div class="sectionHead">
+  <div class="section-title">
+    <h2>🔥 Trending Deals</h2>
+    <span>View All →</span>
+  </div>
 
-    <div>
-      <span class="smallTitle">TRENDING NOW</span>
-      <h2>🔥 Popular Picks</h2>
+  <div class="products">
+
+    <div class="card">
+      <div class="product-img">🎧</div>
+      <div class="info">
+        <h3>Wireless Earbuds</h3>
+        <div class="rating">★★★★★</div>
+        <div class="price">₹699 <span class="old">₹1,499</span></div>
+        <button class="add">ADD TO CART</button>
+      </div>
     </div>
 
-    <button onclick="filterProducts('all')">
-      View All →
-    </button>
-
-  </div>
-
-  <div id="products" class="products"></div>
-
-</section>
-
-
-<!-- OFFER -->
-
-<section class="offer">
-
-  <div>
-
-    <span>LIMITED TIME OFFER</span>
-
-    <h2>
-      Upgrade your everyday shopping.
-    </h2>
-
-    <p>
-      Find smart products at prices you'll love.
-    </p>
-
-  </div>
-
-  <button onclick="document.getElementById('products').scrollIntoView()">
-    Shop Deals →
-  </button>
-
-</section>
-
-
-<!-- CART -->
-
-<div id="cartModal" class="modal">
-
-  <div class="cartBox">
-
-    <button class="close" onclick="closeCart()">✕</button>
-
-    <h2>🛒 Your Shopping Cart</h2>
-
-    <div id="cartItems"></div>
-
-    <div class="cartSummary">
-      <span>Total</span>
-      <strong>₹<span id="cartTotal">0</span></strong>
-    </div>
-
-    <button class="checkout" onclick="checkout()">
-      Continue to Checkout →
-    </button>
-
-  </div>
-
-</div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="footerLogo">ZENVORA</div>
-
-  <p>
-    Smart Shopping. Better Living.
-  </p>
-
-  <div class="footerLinks">
-    <span>About</span>
-    <span>Contact</span>
-    <span>Shipping</span>
-    <span>Returns</span>
-    <span>Privacy</span>
-  </div>
-
-  <div class="copyright">
-    © 2026 ZENVORA. All rights reserved.
-  </div>
-
-</footer>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+    <div class="card">
+      <div class="product-img">⌚</div>
+      <div class="info">
+        <h3>Smart Watch</h3>
+        <div class="rating">★★★★★</div>
+        <div class="price">₹999 <span class="old">₹1,999</span></div>
+        <button class="add">ADD TO
